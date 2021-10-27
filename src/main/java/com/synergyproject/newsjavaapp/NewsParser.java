@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-
 @Component
 public class NewsParser {
 
@@ -24,7 +23,7 @@ public class NewsParser {
         try {
             Document document = Jsoup.connect(url).get();
 
-            Elements news = document.getElements;// Тут проблема - не понятно как взять элементы с lenta.ru getElementsByArgument?
+            Elements news = document.select(".b-yellow-box__wrap");
             for(Element element: news){
                 String title = element.ownText();
                 if(!newsService.isExist(title)){
@@ -36,6 +35,5 @@ public class NewsParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

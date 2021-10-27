@@ -7,6 +7,6 @@ import java.util.List;
 @Service
 public interface NewsService {
     public void save(News news);
-    public boolean isExist(String newTitle);
+    public boolean isExist(String newsTitle);
     public List<News> getTopNews();
 }
