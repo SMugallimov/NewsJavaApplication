@@ -1,5 +1,7 @@
-package com.synergyproject.newsjavaapp;
+package com.synergyproject.newsjavaapp.job;
 
+import com.synergyproject.newsjavaapp.model.News;
+import com.synergyproject.newsjavaapp.service.NewsService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,13 +19,16 @@ public class NewsParser {
     NewsService newsService;
 
     @Scheduled(fixedDelay = 10000)
-    public void parseTopNews(){
+    public void parseNewNews(){
+
         String url = "https://lenta.ru/";
-
         try {
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url)
+                    .userAgent("Google")
+                    .referrer("https://www.google.com")
+                    .get();
 
-            Elements news = document.select(".b-yellow-box__wrap");
+            Elements news = document.getElementsByClass("#root > section.b-layout.js-layout.b-layout_main > div > div > div.span8.js-main__content");
             for(Element element: news){
                 String title = element.ownText();
                 if(!newsService.isExist(title)){

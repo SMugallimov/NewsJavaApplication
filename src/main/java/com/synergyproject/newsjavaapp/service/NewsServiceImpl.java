@@ -1,12 +1,15 @@
-package com.synergyproject.newsjavaapp;
+package com.synergyproject.newsjavaapp.service;
 
+import com.synergyproject.newsjavaapp.model.News;
+import com.synergyproject.newsjavaapp.repository.NewsRepository;
+import com.synergyproject.newsjavaapp.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class NewsServiceImpl implements NewsService{
+public class NewsServiceImpl implements NewsService {
 
     @Autowired
     NewsRepository newsRepository;

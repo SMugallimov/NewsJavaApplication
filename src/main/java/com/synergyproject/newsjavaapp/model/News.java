@@ -1,10 +1,9 @@
-package com.synergyproject.newsjavaapp;
-
-import org.springframework.data.annotation.Id;
+package com.synergyproject.newsjavaapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class News {
@@ -14,9 +13,6 @@ public class News {
     private long id;
     private String title;
 
-    public News(){
-
-    }
 
     public long getId() {
         return id;
