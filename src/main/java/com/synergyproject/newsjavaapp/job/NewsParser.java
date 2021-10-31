@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +14,13 @@ import java.io.IOException;
 @Component
 public class NewsParser {
 
-    @Autowired
-    NewsService newsService;
+    final NewsService newsService;
 
-    @Scheduled(fixedDelay = 10000)
+    public NewsParser(NewsService newsService) {
+        this.newsService = newsService;
+    }
+
+    @Scheduled(fixedDelay = 10_000)
     public void parseNewNews(){
 
         String url = "https://lenta.ru/";
@@ -26,9 +28,10 @@ public class NewsParser {
             Document document = Jsoup.connect(url)
                     .userAgent("Google")
                     .referrer("https://www.google.com")
+                    .timeout(5_000)
                     .get();
 
-            Elements news = document.getElementsByClass("#root > section.b-layout.js-layout.b-layout_main > div > div > div.span8.js-main__content");
+            Elements news = document.getElementsByClass("g-time");
             for(Element element: news){
                 String title = element.ownText();
                 if(!newsService.isExist(title)){

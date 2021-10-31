@@ -2,17 +2,15 @@ package com.synergyproject.newsjavaapp.service;
 
 import com.synergyproject.newsjavaapp.model.News;
 import com.synergyproject.newsjavaapp.repository.NewsRepository;
-import com.synergyproject.newsjavaapp.service.NewsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class NewsServiceImpl implements NewsService {
 
-    @Autowired
-    NewsRepository newsRepository;
+    final NewsRepository newsRepository;
+    public NewsServiceImpl (NewsRepository newsRepository){
+        this.newsRepository = newsRepository;
+    }
 
     @Override
     public void save (News news){
@@ -31,7 +29,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<News> getTopNews() {
+    public List<News> getAllNews() {
         return newsRepository.findAll();
     }
 }
