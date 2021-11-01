@@ -1,9 +1,7 @@
 package com.synergyproject.newsjavaapp.api;
 
 import com.synergyproject.newsjavaapp.model.News;
-import com.synergyproject.newsjavaapp.repository.NewsRepository;
 import com.synergyproject.newsjavaapp.service.NewsService;
-import com.synergyproject.newsjavaapp.service.NewsServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +20,4 @@ public class NewsController {
     public List<News> getAllNews(){
         return newsService.getAllNews();
     }
-
 }

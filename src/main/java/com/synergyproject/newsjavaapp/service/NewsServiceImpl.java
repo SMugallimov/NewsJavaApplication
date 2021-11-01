@@ -2,9 +2,11 @@ package com.synergyproject.newsjavaapp.service;
 
 import com.synergyproject.newsjavaapp.model.News;
 import com.synergyproject.newsjavaapp.repository.NewsRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NewsServiceImpl implements NewsService {
 
     final NewsRepository newsRepository;
