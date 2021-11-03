@@ -22,8 +22,8 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public boolean isExist(String newsTitle) {
         List<News> newsList = newsRepository.findAll();
-        for(News news: newsList){
-            if(news.getTitle().equals(newsTitle)){
+        for(News n: newsList){
+            if(n.getTitle().equals(newsTitle)){
                 return true;
             }
         }

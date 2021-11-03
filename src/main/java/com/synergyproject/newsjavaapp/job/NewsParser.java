@@ -27,13 +27,15 @@ public class NewsParser {
         try {
             Document document = Jsoup.connect(url)
                     .userAgent("Google")
-                    .referrer("https://www.google.com")
                     .timeout(5_000)
+                    .referrer("https://www.google.com")
                     .get();
 
-            Elements news = document.getElementsByClass("g-time");
-            for(Element element: news){
-                String title = element.ownText();
+            Elements news = document.select("#root > section.b-layout.js-layout.b-layout_main > div > div > " +
+                    "div.span4.b-sidebar-stickycolumn.js-main__sidebars > " +
+                    "div.b-sidebar-stickycolumn__top.js-main__sidebar-top > section > div");
+            for(Element element: news.select("a")){
+                String title = element.text();
                 if(!newsService.isExist(title)){
                     News obj = new News();
                     obj.setTitle(title);
