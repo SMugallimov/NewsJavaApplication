@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-//@RestController
 @Controller
 public class NewsController {
 
@@ -19,7 +18,6 @@ public class NewsController {
         this.newsService = newsService;
     }
 
-    //    @GetMapping(value = "/news")
     public List<News> getAllNews(){
         return newsService.getAllNews();
     }

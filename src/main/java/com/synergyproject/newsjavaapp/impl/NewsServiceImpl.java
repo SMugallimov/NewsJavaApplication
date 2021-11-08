@@ -1,7 +1,8 @@
-package com.synergyproject.newsjavaapp.service;
+package com.synergyproject.newsjavaapp.impl;
 
 import com.synergyproject.newsjavaapp.model.News;
 import com.synergyproject.newsjavaapp.repository.NewsRepository;
+import com.synergyproject.newsjavaapp.service.NewsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
